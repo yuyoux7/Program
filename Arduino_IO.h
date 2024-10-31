@@ -1,4 +1,7 @@
 #pragma once
+#ifndef NULL
+#define NULL 0
+#endif // !NULL
 #ifndef __ANDUINO_IO__
 #define __ARDUINO_IO__
 typedef uint16_t spio;
@@ -23,7 +26,7 @@ public:
 	void being(spio pin, type SP_TYPE = BOTH, L ...Other);
 	void being(spio pin, L ...Other);
 	bool write(spio pin, spio Power, L ...Other);
-	C read(spio pin, L ...Other);
+	C read(spio pin);
 	~IO();
 	
 private:
