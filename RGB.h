@@ -1,12 +1,14 @@
 #pragma once
 
+#define RED "Red"
+#define GREEN "Green"
+#define BLUE "Blue"
+
 class RGB
 {
 public:
 	RGB(uint8_t S0_PIN, uint8_t S1_PIN, uint8_t S2_PIN, uint8_t S3_PIN, uint8_t out_PIN);
-	int GetRedlevel();
-	int GetBluelevel();
-	int GetGreenlevel();
+	int Getlevel(const char* color);
 private:
 	uint8_t S0{};
 	uint8_t S1{};
@@ -27,23 +29,26 @@ RGB::RGB(uint8_t S0_PIN, uint8_t S1_PIN, uint8_t S2_PIN, uint8_t S3_PIN, uint8_t
 	digitalWrite(S1, 1);
 }
 
-int RGB::GetRedlevel()
+int RGB::Getlevel(const char* color)
 {
-	digitalWrite(S2, 0);
-	digitalWrite(S3, 0);
-	return pulseIn(out, 0);
-}
-
-int RGB::GetBluelevel()
-{
-	digitalWrite(S2, 0);
-	digitalWrite(S3, 1);
-	return pulseIn(out, 0);
-}
-
-int RGB::GetGreenlevel()
-{
-	digitalWrite(S2, 1);
-	digitalWrite(S3, 1);
+	switch (color)
+	{
+	case RED:
+		digitalWrite(S2, 0);
+		digitalWrite(S3, 0);
+		break;
+	case GREEN:
+		digitalWrite(S2, 1);
+		digitalWrite(S3, 1);
+		break;
+	case BLUE:
+		digitalWrite(S2, 0);
+		digitalWrite(S3, 1);
+		break;
+	default:
+		digitalWrite(S2, 1);
+		digitalWrite(S3, 0);
+		break;
+	}
 	return pulseIn(out, 0);
 }
