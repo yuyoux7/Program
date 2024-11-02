@@ -6,9 +6,9 @@
 #define __ARDUINO_IO__
 typedef uint16_t spio;
 typedef uint8_t type;
-#define IN (type) 0
-#define OUT (type) 1
-#define BOTH (type) 2
+#define IN 0
+#define OUT 1
+#define BOTH 2
 template <typename C, typename ...L>
 class IO
 {
