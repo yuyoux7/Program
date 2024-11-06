@@ -20,13 +20,13 @@ private:
 RGB::RGB(uint8_t S0_PIN, uint8_t S1_PIN, uint8_t S2_PIN, uint8_t S3_PIN, uint8_t out_PIN)
 	: S0(S0_PIN), S1(S1_PIN), S2(S2_PIN), S3(S3_PIN), out(out_PIN)
 {
-	pinMode(S0, 1);
-	pinMode(S1, 1);
-	pinMode(S2, 1);
-	pinMode(S3, 1);
-	pinMode(out, 0);
-	digitalWrite(S0, 1);
-	digitalWrite(S1, 1);
+	pinMode(this->S0, 1);
+	pinMode(this->S1, 1);
+	pinMode(this->S2, 1);
+	pinMode(this->S3, 1);
+	pinMode(this->out, 0);
+	digitalWrite(this->S0, 1);
+	digitalWrite(this->S1, 1);
 }
 
 int RGB::Getlevel(uint8_t type)
@@ -34,21 +34,21 @@ int RGB::Getlevel(uint8_t type)
 	switch (type)
 	{
 	case RED:
-		digitalWrite(S2, 0);
-		digitalWrite(S3, 0);
+		digitalWrite(this->S2, 0);
+		digitalWrite(this->S3, 0);
 		break;
 	case GREEN:
-		digitalWrite(S2, 1);
-		digitalWrite(S3, 1);
+		digitalWrite(this->S2, 1);
+		digitalWrite(this->S3, 1);
 		break;
 	case BLUE:
-		digitalWrite(S2, 0);
-		digitalWrite(S3, 1);
+		digitalWrite(this->S2, 0);
+		digitalWrite(this->S3, 1);
 		break;
 	default:
-		digitalWrite(S2, 1);
-		digitalWrite(S3, 0);
+		digitalWrite(this->S2, 1);
+		digitalWrite(this->S3, 0);
 		break;
 	}
-	return pulseIn(out, 0);
+	return pulseIn(this->out, 0);
 }
