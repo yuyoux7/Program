@@ -6,7 +6,7 @@ class motor
 public:
 	motor(motor_pint ENA, motor_pint DIR, motor_pint PUI);
 	void setstep(motor_pint step);
-	void run();
+	void run(int turn);
 	void stop();
 	~motor();
 
@@ -19,22 +19,35 @@ private:
 
 motor::motor(motor_pint ENA, motor_pint DIR, motor_pint PUI) : ENA_pin(ENA), DIR_pin(DIR), PUI_pin(PUI)
 {
-
+	pinMode(this->DIR_pin, 1);
+	pinMode(this->PUI_pin, 0 | 1);
+	pinMode(this->ENA_pin, 1);
+	digitalWrite(this->PUI_pin, 0);
+	digitalWrite(this->DIR_pin, 0);
+	digitalWrite(this->ENA_pin, 1);
+	delaymicroseconds(1000);
+	//while (digitalRead(this->PUI_pin)) {}
+	digitalWrite(this->ENA_pin, 0);
+	digitalWrite(this->DIR_pin, 1);
 }
 
 void motor::setstep(motor_pint step)
 {
-
+	this->Step = step;
 }
 
-void motor::run()
+void motor::run(int turn)
 {
-
+	digitalWrite(this->DIR_pin, turn);
+	digitalWrit(this->PUI_pin, 1);
+	delaymicroseconds(500);
+	digitalWrite(this->PUI_pin, 0);
+	delaymicroseconds(500);
 }
 
 void motor::stop()
 {
-
+	digitalWrite(this->PUI_pin, 0);
 }
 
 motor::~motor()
