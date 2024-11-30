@@ -39,10 +39,10 @@ void motor::setstep(motor_pint step)
 void motor::run(int turn)
 {
 	digitalWrite(this->DIR_pin, turn);
-	digitalWrit(this->PUI_pin, 1);
-	delaymicroseconds(500);
+	digitalWrite(this->PUI_pin, 1);
+	delayMicroseconds(500);
 	digitalWrite(this->PUI_pin, 0);
-	delaymicroseconds(500);
+	delayMicroseconds(500);
 }
 
 void motor::stop()

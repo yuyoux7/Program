@@ -19,7 +19,7 @@ void loop()
 		delay(10);
 		color[2] = RGB_Data.Getlevel(GREEN);
 		delay(10); 
-		color[3] = RGB_Data.Getlevel(BLUE)
+		color[3] = RGB_Data.Getlevel(BLUE);
 		delay(480);
 
 	}
