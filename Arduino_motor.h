@@ -20,12 +20,12 @@ private:
 motor::motor(motor_pint ENA, motor_pint DIR, motor_pint PUI) : ENA_pin(ENA), DIR_pin(DIR), PUI_pin(PUI)
 {
 	pinMode(this->DIR_pin, 1);
-	pinMode(this->PUI_pin, 0 | 1);
+	pinMode(this->PUI_pin, 1);
 	pinMode(this->ENA_pin, 1);
 	digitalWrite(this->PUI_pin, 0);
 	digitalWrite(this->DIR_pin, 0);
 	digitalWrite(this->ENA_pin, 1);
-	delaymicroseconds(1000);
+	delay(1000);
 	//while (digitalRead(this->PUI_pin)) {}
 	digitalWrite(this->ENA_pin, 0);
 	digitalWrite(this->DIR_pin, 1);
