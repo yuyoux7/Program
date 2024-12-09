@@ -14,7 +14,7 @@ enum lolc{
 	red = 0,
 	green = 200,
 	blue = 400
-}
+};
 
 void loop()
 {
