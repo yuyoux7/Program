@@ -10,6 +10,12 @@ void setup()
 int local{};
 int color[4]{};
 
+enum lolc{
+	red = 0,
+	green = 200,
+	blue = 400
+}
+
 void loop()
 {
 	if (local == 0)
@@ -21,7 +27,12 @@ void loop()
 		delay(10); 
 		color[3] = RGB_Data.Getlevel(BLUE);
 		delay(480);
-
+		if (color[1] > color[2] && color[1] > color[3])
+			local = lolc.red;
+		else if (color[2] > 3)
+			local = lolc.green;
+		else
+			local = lolc.blue;
 	}
 	else
 	{
