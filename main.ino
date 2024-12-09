@@ -9,6 +9,7 @@ void setup()
 
 int local{};
 int color[4]{};
+bool rtm = false;
 
 enum lolc{
 	red = 0,
@@ -18,7 +19,7 @@ enum lolc{
 
 void loop()
 {
-	if (local == 0)
+	if (local == 0 && !rtm)
 	{
 		mtr.stop();
 		color[1] += RGB_Data.Getlevel(RED);
@@ -33,8 +34,15 @@ void loop()
 			local = lolc.green;
 		else
 			local = lolc.blue;
+		mtr.setstep(local);
+		rtm = !rtm;
 	}
-	else
+	else if(!rtm)
+	{
+		mtr.back();
+		rtm = !rtm;
+	}
+	else 
 	{
 		mtr.run(1);
 		local--;
