@@ -1,7 +1,7 @@
 # 接口
 |編號|功能|備註|
 |:---:|:---|:---|
-|A13|5V IN||
+|A13|+5V IN||
 |A14|GND|From Arduino|
 |C01|GND|From S-120-24|
 |E01|-12V IN||
@@ -44,6 +44,6 @@
 |PIN|Function|Default stat|
 |:---:|:---:|:---:|
 |1|NM|OFF|
-|2|NM|OFF|
-|3|Motor EN|OFF|
+|2|+5V INPUT|ON|
+|3|NM|OFF|
 |4|+12V INPUT|ON|
