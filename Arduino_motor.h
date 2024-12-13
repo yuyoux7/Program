@@ -27,7 +27,7 @@ motor::motor(motor_pint ENA, motor_pint DIR, motor_pint PUI) : ENA_pin(ENA), DIR
 	digitalWrite(this->PUI_pin, 0);
 	digitalWrite(this->DIR_pin, 0);
 	digitalWrite(this->ENA_pin, 1);
-	delay(1000);
+	//delay(1000);
 	//while (digitalRead(this->PUI_pin)) {}
 	digitalWrite(this->ENA_pin, 0);
 	digitalWrite(this->DIR_pin, 1);
@@ -48,7 +48,7 @@ void motor::run(int turn)
 	delayMicroseconds(500);
 }
 
-void back()
+void motor::back()
 {
 	digitalWrite(this->DIR_pin, this->Run_F);
 	for (; this->Step > 0; this->Step--)
