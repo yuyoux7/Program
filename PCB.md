@@ -45,7 +45,7 @@
 # DIP Function
 |PIN|Function|Default stat|
 |:---:|:---:|:---:|
-|1|NM|OFF|
+|1|Motor Free|OFF|
 |2|+5V INPUT|ON|
 |3|NM|OFF|
 |4|+12V INPUT|ON|
