@@ -8,7 +8,7 @@ public:
 	void setstep(motor_pint step);
 	void run(int turn);
 	void back();
-	void stop();
+	void stop() const;
 	~motor();
 
 private:
@@ -27,8 +27,6 @@ motor::motor(motor_pint ENA, motor_pint DIR, motor_pint PUI) : ENA_pin(ENA), DIR
 	digitalWrite(this->PUI_pin, 0);
 	digitalWrite(this->DIR_pin, 0);
 	digitalWrite(this->ENA_pin, 1);
-	//delay(1000);
-	//while (digitalRead(this->PUI_pin)) {}
 	digitalWrite(this->ENA_pin, 0);
 	digitalWrite(this->DIR_pin, 1);
 }
@@ -41,6 +39,7 @@ void motor::setstep(motor_pint step)
 void motor::run(int turn)
 {
 	this->Run_F = !turn;
+	digitalWrite(this->ENA_pin, 0);
 	digitalWrite(this->DIR_pin, turn);
 	digitalWrite(this->PUI_pin, 1);
 	delayMicroseconds(500);
@@ -61,9 +60,10 @@ void motor::back()
 	stop();
 }
 
-void motor::stop()
+void motor::stop() const
 {
 	digitalWrite(this->PUI_pin, 0);
+	digitalWrite(this->ENA_pin, 1);
 }
 
 motor::~motor()

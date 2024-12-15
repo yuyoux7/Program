@@ -9,6 +9,7 @@ class RGB
 public:
 	RGB(uint8_t S0_PIN, uint8_t S1_PIN, uint8_t S2_PIN, uint8_t S3_PIN, uint8_t out_PIN);
 	int Getlevel(uint8_t type);
+	void SetColor(int * Data);
 private:
 	uint8_t S0{};
 	uint8_t S1{};
@@ -51,4 +52,11 @@ int RGB::Getlevel(uint8_t type)
 		break;
 	}
 	return pulseIn(this->out, 0);
+}
+
+void RGB::SetColor(int* Data)
+{
+	Data[1] = Getlevel(RED);
+	Data[2] = Getlevel(GREEN);
+	Data[3] = Getlevel(BLUE);
 }
