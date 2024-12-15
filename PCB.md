@@ -28,8 +28,8 @@
 |T18|GY-31 LED OUT|NM|
 |U01|Motor B- OUT||
 |U18|GND|From Arduino|
-|V01|Motor Free OUTPUT||
-|W01|GY-31 set Button OUT||
+|V01|Motor Free OUTPUT|12|
+|W01|GY-31 set Button OUT|4|
 |X04|GY-31 S2 IN|7|
 |X05|GY-31 S1 IN|3|
 |X06|GY-31 S0 IN|2|
