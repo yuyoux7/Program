@@ -31,13 +31,12 @@ void setup()
 
 int local{};
 int color[4]{};
-bool rtm = false;
 
 void loop()
 {
 	if (!digitalRead(12))
 	{
-		if (local == 0 && !rtm)
+		if (local == 0)
 		{
 			mtr.stop();
 			color[1] += RGB_Data.Getlevel(RED);
@@ -48,10 +47,6 @@ void loop()
 			delay(200);
 			RGB_Data.Process(&local, local_C, color);
 			mtr.setstep(local);
-			if (local == 0)
-			{
-				rtm = !rtm;
-			}
 		}
 		else
 		{
@@ -59,7 +54,8 @@ void loop()
 			//local--;
 			delay(300);
 			mtr.back();
-			rtm = !rtm;
+			delay(300);
+			local = 0;
 		}
 	}
 	else
