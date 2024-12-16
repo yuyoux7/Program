@@ -40,18 +40,22 @@ void motor::run(int turn)
 {
 	this->Run_F = !turn;
 	digitalWrite(this->ENA_pin, 0);
-	digitalWrite(this->DIR_pin, turn);
-	digitalWrite(this->PUI_pin, 1);
-	delayMicroseconds(500);
-	digitalWrite(this->PUI_pin, 0);
-	delayMicroseconds(500);
+	for (auto i = this->Step; i > 0; i--)
+	{
+		digitalWrite(this->DIR_pin, turn);
+		digitalWrite(this->PUI_pin, 1);
+		delayMicroseconds(500);
+		digitalWrite(this->PUI_pin, 0);
+		delayMicroseconds(500);
+	}
+	delay(this->Step * 2);
 }
 
 void motor::back()
 {
-	digitalWrite(this->DIR_pin, this->Run_F);
 	for (; this->Step > 0; this->Step--)
 	{
+		digitalWrite(this->DIR_pin, this->Run_F);
 		digitalWrite(this->PUI_pin, 1);
 		delayMicroseconds(500);
 		digitalWrite(this->PUI_pin, 0);

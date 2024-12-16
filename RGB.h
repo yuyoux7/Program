@@ -10,6 +10,7 @@ public:
 	RGB(uint8_t S0_PIN, uint8_t S1_PIN, uint8_t S2_PIN, uint8_t S3_PIN, uint8_t out_PIN);
 	int Getlevel(uint8_t type);
 	void SetColor(int * Data);
+	void Process(int* local, int** source, int* now);
 private:
 	uint8_t S0{};
 	uint8_t S1{};
@@ -59,4 +60,42 @@ void RGB::SetColor(int* Data)
 	Data[1] = Getlevel(RED);
 	Data[2] = Getlevel(GREEN);
 	Data[3] = Getlevel(BLUE);
+}
+
+void RGB::Process(int* local, int** source, int* now)
+{
+	if ((now[1] > (source[1][1] * 0.9)) || (now[1] < (source[1][1] * 1.1)))
+	{
+		if ((now[2] > (source[1][2] * 0.9)) || (now[2] < (source[1][2] * 1.1)))
+		{
+			if ((now[3] > (source[1][3] * 0.9)) || (now[2] < (source[1][3] * 1.1)))
+			{
+				local = 50;
+			}
+		}
+	}
+	else if ((now[1] > (source[2][1] * 0.9)) || (now[1] < (source[2][1] * 1.1)))
+	{
+		if ((now[2] > (source[2][2] * 0.9)) || (now[2] < (source[2][2] * 1.1)))
+		{
+			if ((now[3] > (source[2][3] * 0.9)) || (now[2] < (source[2][3] * 1.1)))
+			{
+				local = 450;
+			}
+		}
+	}
+	else if ((now[1] > (source[3][1] * 0.9)) || (now[1] < (source[3][1] * 1.1)))
+	{
+		if ((now[2] > (source[3][2] * 0.9)) || (now[2] < (source[3][2] * 1.1)))
+		{
+			if ((now[3] > (source[3][3] * 0.9)) || (now[2] < (source[3][3] * 1.1)))
+			{
+				local = 850;
+			}
+		}
+	}
+	else
+	{
+		local = 0;
+	}
 }
