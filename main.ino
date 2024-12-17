@@ -39,7 +39,7 @@ void loop()
 		if (local == 0)
 		{
 			mtr.stop();
-			color[1] += RGB_Data.Getlevel(RED);
+			color[1] = RGB_Data.Getlevel(RED);
 			delay(150);
 			color[2] = RGB_Data.Getlevel(GREEN);
 			delay(150);
